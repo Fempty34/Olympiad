@@ -84,19 +84,54 @@ signed main() {
         }
     }
 
+    vector<int> diameters(n + 1, 0);
+    for (int i = 0; i < n; i++)
+    {
+        int v = order[i];
+        vector<int> sons;
+        for(auto u : tree[v]){
+            sons.pb(h[u]);
+            diameters[v] = max(diameters[v], diameters[u]);
+        }
+        if(sons.size() >= 2){
+            sort(all(sons));
+            reverse(all(sons));
+            diameters[v] = max(diameters[v], sons[0] + sons[1] + 2);
+        }
+        else if (sons.size() == 1){
+            diameters[v] = max(diameters[v], sons[0]);
+        }
+    }
+    
+
     vector<int> dp(n + 1, 0);
     for (int i = 0; i < n; i++)
     {
-        vector<int> sons;
-        for(auto u : tree[order[i]]){
-            sons.pb(h[u]);
+        int v = order[i];
+        vector<pair<int, int>> sons;
+        vector<pair<int, int>> sons_diams;
+        for(auto u : tree[v]){
+            sons.pb({h[u], u});
+            sons_diams.pb({diameters[u], u});
+            dp[v] = max(dp[v], dp[u]);
         }
         if(sons.size() >= 3){
             sort(all(sons));
             reverse(all(sons));
+
+            sort(all(sons_diams));
+            reverse(all(sons_diams));
+
+        }
+        else if (sons.size() == 2){
+            sort(all(sons));
+            reverse(all(sons));
+            dp[v] = max(dp[v], (sons[1].fr + 1) * sons[0].fr);
+
+        }
+        else{
             
         }
-
     }
     
     
