@@ -11,7 +11,7 @@ typedef string str;
 
 #define all(a) a.begin(), a.end()
 #define int long long
-#define print_array(_v) for(int i=0;i<(_v).size();++i){cout<<(_v)[i]<<' ';}cout<<endl;
+//#define print_array(_v) for(int i=0;i<(_v).size();++i){cout<<(_v)[i]<<' ';}cout<<endl;
 // #define scan_array(_v) for(int i=0;i<(_v).size();i++){cin >> (_v)[i];}
 #define fr first
 #define sc second
