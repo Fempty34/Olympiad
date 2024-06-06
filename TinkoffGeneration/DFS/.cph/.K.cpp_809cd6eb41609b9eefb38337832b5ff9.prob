@@ -1,0 +1,1 @@
+{"name":"Local: K","url":"c:\\Users\\vladp\\OneDrive\\Documents\\Olympiad\\TinkoffGeneration\\DFS\\K.cpp","tests":[{"id":1717649667588,"input":"3 3\n1 2\n2 3\n3 1\n3 3 3","output":"->\n->\n->"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\vladp\\OneDrive\\Documents\\Olympiad\\TinkoffGeneration\\DFS\\K.cpp","group":"local","local":true}
