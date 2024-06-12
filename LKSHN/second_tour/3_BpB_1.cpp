@@ -11,8 +11,8 @@ typedef string str;
 
 #define all(a) a.begin(), a.end()
 #define int long long
-//#define print_array(_v) for(int i=0;i<(_v).size();++i){cout<<(_v)[i]<<' ';}cout<<endl;
-//#define scan_array(_v) for(int i=0;i<(_v).size();i++){cin >> (_v)[i];}
+#define print_array(_v) for(int i=0;i<(_v).size();++i){cout<<(_v)[i]<<' ';}cout<<endl;
+#define scan_array(_v) for(int i=0;i<(_v).size();i++){cin >> (_v)[i];}
 #define fr first
 #define sc second
 #define pb push_back
@@ -29,23 +29,16 @@ signed main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int n; cin >> n;
-    int div = 2;
-    vector<int> divivers;
+    int x, y;
+    cin >> x >> y;
 
-    while(n != 1){
-        while(n % div == 0){
-            divivers.push_back(div);
-            n /= div;
-        }
-        div++;
-    }
-    sort(all(divivers));
-
-    for(auto u : divivers){
-        cout << u << " ";
+    int ans = 1;
+    while(x <= y){
+        x *= 2;
+        ans++;
     }
     
+    cout << ans - 1 << endl;
 
     return 0;
 }

@@ -1,0 +1,68 @@
+// #pragma GCC optimize("O3,unroint-loops")
+// #pragma GCC target("avx2")
+
+#include <bits/stdc++.h>
+#include <cmath>
+
+using namespace std;
+typedef long long ll;
+typedef long double ld;
+typedef string str;
+
+#define all(a) a.begin(), a.end()
+#define int long long
+#define print_array(_v) for(int i=0;i<(_v).size();++i){cout<<(_v)[i]<<' ';}cout<<endl;
+#define scan_array(_v) for(int i=0;i<(_v).size();i++){cin >> (_v)[i];}
+#define fr first
+#define sc second
+#define pb push_back
+
+int INF = 1e9 + 1;
+const int MOD = 1e9;
+const int N = 5*1e5 + 19;
+
+int p;
+
+vector<int> f;
+
+int binpow(int a, int n) {
+    int ans = 1;
+    while(n > 0) {
+        if(n % 2 == 1) {
+            ans = (ans * a) % p;
+        }
+        a = a * a % p;
+        n /= 2;
+    }
+    return ans;
+}
+
+int obrat(int a) {
+    return binpow(a, p - 2);
+}
+
+int c1(int n, int k) {
+    return ((f[n] * obrat(f[k]) % p) * obrat(f[n - k])) % p;
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
+    int n;
+    cin >> n >> p;
+    f.resize(n + 1, 1);
+    for(int i = 1; i <= n; i++) {
+        f[i] = (f[i - 1] * i) % p;
+    }
+    ll ans = 0;
+    int i = 1;
+    while(2 * i < n) {
+        ans = (ans + ((c1(n - 1, i - 1) * 26) % p) * binpow(25, i - 1)) % p;
+        i++;
+    }
+    cout << ans;
+
+    return 0;
+}

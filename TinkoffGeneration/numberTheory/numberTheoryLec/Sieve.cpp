@@ -21,12 +21,7 @@ int INF = 1e9 + 1;
 const int MOD = 1e9;
 const int N = 5*1e5 + 19;
 
-//O(log(max(a, b)))
-int gcd(int a, int b){
-    if (b == 0)
-        return a;
-    return gcd(b, a % b);
-}
+
 
 
 signed main() {
@@ -34,15 +29,28 @@ signed main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int n; cin >> n;
-    vector<int> v(n);
-    scan_array(v);
+    int minDiv[N];
+    vector<int> primes;
 
-    //O(n + log(C))
-    int d = 1;
-    for(int i = 0; i < n; i++){
-        d = gcd(d, v[i]);
+    for (int i = 2; i < N; i++)
+    {
+        minDiv[i] = i;
     }
+
+    for (int i = 2; i < N; i++)
+    {
+        if(minDiv[i] == i){
+            primes.push_back(i);
+        }
+
+        for (int j = 0; j < primes.size() && primes[j] <= minDiv[i] && i * primes[j] < N; j++)
+        {
+            minDiv[i * primes[j]] = primes[j];
+        }
+        
+    }
+    
+    
     
 
     return 0;
