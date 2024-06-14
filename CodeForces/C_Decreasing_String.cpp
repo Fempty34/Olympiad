@@ -19,7 +19,8 @@ typedef string str;
 
 int INF = 1e9 + 1;
 const int MOD = 1e9;
-const int N = 1e5 + 19;
+const int N = 5*1e5 + 19;
+
 
 
 
@@ -27,17 +28,37 @@ signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-    int t; cin >> t;
-    while (t--) {
-        int n, m;
-        cin >> n >> m;
-        int ans = 0;
-        for(int i = 1; i <= m; i++)
-            ans += (n + i) / (i * i);
-        cout << ans - 1 << endl;
+
+    int t;
+    cin >> t;
+    while(t--){
+        string s;
+        int pos;
+        cin >> s >> pos;
+        pos--;
+        
+        int n = s.size();
+        vector <char> st;
+        bool flag = pos < n;
+        s += '%';
+        
+        for (auto c : s) {
+            while (!flag && st.size() > 0 && st.back() > c) {
+                pos -= n;
+                --n;
+                st.pop_back();
+                
+                if(pos < n) 
+                    flag = true;
+            }
+            st.push_back(c);
+        }
+        
+        cout << st[pos];
     }
     
-
+    
+    
 
     return 0;
 }
