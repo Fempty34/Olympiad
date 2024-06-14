@@ -70,7 +70,7 @@ signed main() {
         
 
 
-        cout << "YES " <<((a + n * ((b - a)) * x) + lcm(n, m)) % (lcm(n, m)) << " " << lcm(n, m) << endl;
+        cout << "YES " <<((a + n * ((b - a)) * x) % lcm(n, m) + lcm(n, m)) % (lcm(n, m)) << " " << lcm(n, m) << endl;
 
     }
 
