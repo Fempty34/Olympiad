@@ -1,41 +1,38 @@
-struct Node{
-    int cnt;
-    int go[26];
+const int k = 26;
 
-    Node(){
-        cnt = 0;
-        memset(go, -1, sizeof(go));
-    }
+struct Vertex {
+    Vertex* to[k] = {0}; // нулевой указатель означает, что перехода нет
+    bool terminal = 0;
 };
 
-
-vector<Node> trie;
-
-
-void init(){
-    trie.emplace_back();
-}
-
-void add_string(const string& s){
-    int v = 0;
-    for (int i = 0; i < s.size(); i++) {
-        if(trie[v].go[s[i] - 'a'] == -1){
-            trie.emplace_back();
-            trie[v].go[s[i] - 'a'] = trie.size() - 1;
-        }
-        v = trie[v].go[s[i] - 'a'];
+Vertex *root = new Vertex();
+void add_string(string &s) {
+    v = root;
+    for (char c : s) {
+        c -= 'a'; // получаем число от 0 до 25
+        if (!v->to[c]) 
+            v->to[c] = new Vertex();
+        v = v->to[c];
     }
-    ++trie[v].cnt;
+    v->terminal = true;
 }
-
-
-bool exists(const string& s){
-    int v = 0;
-    for (int i = 0; i < s.size(); i++) {
-        if(trie[v].go[s[i] - 'a'] == -1){
+bool find(string &s) {
+    v = root;
+    for (char c : s) {
+        c -= 'a';
+        if (!v->to[c])
             return false;
-        }
-        v = trie[v].go[s[i] - 'a'];
+        v = v->to[c];
     }
-    return trie[v].cnt > 0;
+    return v->terminal;
 }
+
+bool erase(string &s) {
+    v = root;
+    for (char c : s)
+        v = v->to[c - 'a'];
+    v->terminal = false;
+}
+
+
+
