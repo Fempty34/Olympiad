@@ -19,37 +19,39 @@ typedef string str;
 
 int INF = 1e9 + 1;
 const int MOD = 1e9;
-const int N = 5*1e5 + 19;
+const int N = 30;
 
 
-
+int lcs[N][N] = {0};
 
 signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int minDiv[N];
-    vector<int> primes;
+    string a, b;
+    cin >> a >> b;
 
-    for (int i = 2; i < N; i++)
-    {
-        minDiv[i] = i;
-    }
+    int n  = a.size();
+    int m = b.size();
 
-    for (int i = 2; i < N; i++)
+    for (int i = 1; i <= n; i++)
     {
-        if(minDiv[i] == i){
-            primes.push_back(i);
-        }
-        for (int j = 0; j < primes.size() && primes[j] <= minDiv[i] && i * primes[j] < N; j++)
+        for (int j = 1; j <= m; j++)
         {
-            minDiv[i * primes[j]] = primes[j];
+            if (a[i - 1] == b[j - 1])
+            {
+                lcs[i][j] = lcs[i - 1][j - 1] + 1;
+            }
+            else
+            {
+                lcs[i][j] = max(lcs[i - 1][j], lcs[i][j - 1]);
+            }
         }
         
     }
-    
-    
+
+    cout << lcs[n][m] << '\n';
     
 
     return 0;

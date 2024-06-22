@@ -29,25 +29,28 @@ signed main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int minDiv[N];
-    vector<int> primes;
+    int t; cin >> t;
+    while(t--){
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
 
-    for (int i = 2; i < N; i++)
-    {
-        minDiv[i] = i;
-    }
+        string sub;
+        sub += s[0];
+        sub += s[1];
+        int ans = 0;
 
-    for (int i = 2; i < N; i++)
-    {
-        if(minDiv[i] == i){
-            primes.push_back(i);
-        }
-        for (int j = 0; j < primes.size() && primes[j] <= minDiv[i] && i * primes[j] < N; j++)
+        for (int i = 2; i < n; i++)
         {
-            minDiv[i * primes[j]] = primes[j];
+            if(sub[sub.size() - 2] == 'p' && sub[sub.size() - 1] == 'i' && s[i] == 'e')ans++;
+            else if(sub[sub.size() - 2] == 'm' && sub[sub.size() - 1] == 'a' && s[i] == 'p')ans++;
+            else sub += s[i];
+            cout << sub << endl;
         }
-        
+        cout << ans << endl;
     }
+
     
     
     
