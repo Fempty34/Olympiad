@@ -29,6 +29,21 @@ signed main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
+    int n; cin >> n;
+    string s; cin >> s;
+    int ans = 0;
+    map<char, int> keys;    
+    for (int i = 0; i < 2 * (n - 1); i += 2)
+    {
+        keys[s[i]]++; //cout << (char)(s[i + 1] + 32) << endl;
+        if (keys[s[i + 1] + 32] <= 0){keys[s[i + 1] + 32]++; ans++;}
+        keys[s[i + 1] + 32]--;
+    }
+
+    cout << ans << endl;
+    
+
+
     
     
     
