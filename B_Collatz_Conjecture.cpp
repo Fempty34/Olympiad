@@ -29,9 +29,21 @@ signed main() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 
+    int t; cin >> t;
+    while(t--) {
+        int x, y, k;
+        cin >> x >> y >> k;
+        if (y == 2 && x == k) {
+            cout << 1 << endl;
+        }
+        while(y - x % y <= k) {
+            k -= y - x % y;
+            x += y - x % y;
+            
+            while(x % y == 0) x /= y;
+        }
+        cout << x + k << endl;
+    }
     
-    
-    
-
     return 0;
 }

@@ -29,7 +29,9 @@
             "cmath": "cpp",
             "chrono": "cpp",
             "forward_list": "cpp",
-            "ostream": "cpp"
+            "ostream": "cpp",
+            "xiosbase": "cpp",
+            "ios": "cpp"
         }
     }
 }
