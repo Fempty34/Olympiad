@@ -31,7 +31,8 @@
             "forward_list": "cpp",
             "ostream": "cpp",
             "xiosbase": "cpp",
-            "ios": "cpp"
+            "ios": "cpp",
+            "map": "cpp"
         }
     }
 }
