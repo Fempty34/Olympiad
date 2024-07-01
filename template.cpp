@@ -13,6 +13,7 @@ typedef string str;
 #define int long long
 #define print_array(_v) for(int i=0;i<(_v).size();++i){cout<<(_v)[i]<<' ';}cout<<endl;
 #define scan_array(_v) for(int i=0;i<(_v).size();i++){cin >> (_v)[i];}
+#define qfor(_n) for(int i=0;i<_n;i++)
 #define fr first
 #define sc second
 #define pb push_back
