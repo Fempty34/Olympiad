@@ -29,33 +29,18 @@ signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
+
     int t; cin >> t;
     while(t--) {
         int n; cin >> n;
-        int dp[n+1][n+1]{}, a[n+1], mp[n+1]{};
-        for(int i = 1; i <= n; i++) {
-            cin >> a[i];
-            mp[a[i]]++;
-        }
-        for(int i = 0; i <= n; i++)
-            for(int j = 0; j <= n; j++)
-                dp[i][j] = INT_MIN;
-        dp[0][0] = 0;
-        for(int i = 1; i <= n; i++) {
-            for(int j = 0; j <= (n+1)>>1; j++) {
-                if(j > 0) dp[i][j] = max(dp[i][j], dp[i-1][j-1] + 1);
-                if(dp[i-1][j] >= mp[i]) {
-                    dp[i][j] = max(dp[i][j], dp[i-1][j] - mp[i]);
-                }
-            }
-        }
-        for(int k = 0; k <= n; k++) {
-            if(dp[n][k] >= 0) {
-                cout << k << endl;
-                break;
-            }
-        }
-
+        vector<int> h(n);
+        scan_array(h);
+        int ans = h[n - 1];
+        for (int i = n - 2; i >= 0; i--)
+           ans = max(ans + 1, h[i]);
+        
+        cout << ans << endl;
     }
+
     return 0;
 }
