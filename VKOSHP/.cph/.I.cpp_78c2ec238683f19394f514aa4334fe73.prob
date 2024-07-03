@@ -1,0 +1,1 @@
+{"name":"Local: I","url":"c:\\Users\\vladp\\Documents\\Olympiad\\VKOSHP\\I.cpp","tests":[{"id":1720014158886,"input":"3\n101\n","output":"2"},{"id":1720014361715,"input":"6\n010111\n","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\vladp\\Documents\\Olympiad\\VKOSHP\\I.cpp","group":"local","local":true}
