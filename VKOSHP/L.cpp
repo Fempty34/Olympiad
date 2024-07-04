@@ -24,28 +24,16 @@ const int N = 5*1e5 + 19;
 
 mt19937 rnd(197);
 
-int ask(int x) {
-    cout << x << endl;
-    int res; cin >> res;
-    return res;
-}
-
-
 
 signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int n; cin >> n;
-    int l = 1, r = n + 1;
-    int ans = 2;
-    while(ans != 0) {
-        int m = (r + l) / 2;
-        ans = ask(m);
-        if(ans == 1) l = m;
-        else r = m;
-    }
+    
+    
+    
 
     return 0;
 }
+    

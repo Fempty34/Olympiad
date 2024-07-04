@@ -42,17 +42,13 @@ signed main() {
     pref_sum.pb(0);
     for(int i = 0; i < n; i++) pref_sum.pb(pref_sum[i] + a[i].fr);
     
-    
     int ans = -1; int index = -1;
-    qfor(n - m) {
-        //cout << pref_sum[i + m] - pref_sum[i] - m * a[i].fr << endl;
+    qfor(n - m + 1) {
         if (ans == -1 || ans >= pref_sum[i + m] - pref_sum[i] - m * a[i].fr) {
             index = i;
             ans = pref_sum[i + m] - pref_sum[i] - m * a[i].fr;
         }
     }
-    //print_array(pref_sum);
-    //cout << index << " " << ans <<  endl;
     qfor(m) {
         cout << a[index + i].sc + 1 << " ";
     }

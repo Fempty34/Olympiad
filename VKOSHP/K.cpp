@@ -24,27 +24,39 @@ const int N = 5*1e5 + 19;
 
 mt19937 rnd(197);
 
-int ask(int x) {
-    cout << x << endl;
-    int res; cin >> res;
-    return res;
-}
-
-
 
 signed main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int n; cin >> n;
-    int l = 1, r = n + 1;
-    int ans = 2;
-    while(ans != 0) {
-        int m = (r + l) / 2;
-        ans = ask(m);
-        if(ans == 1) l = m;
-        else r = m;
+    int n, m, p;
+    cin >> n >> m >> p;
+    vector<int> v(n * m, 0);
+    v[p] = 1;
+    for(int i = p; i <= n; i++) {
+        if(v[i] == 1) {
+            for(int j = 2; j <= m; j++) {
+                if(v[i * j] == 0)
+                    v[i * j] = 2;
+            }
+        }
+        else if(v[i] == 2) {
+            for(int j = 2; j <= m; j++) {
+                if(v[i * j] == 0)
+                    v[i * j] = 1;
+            }
+        }
+    }
+    
+    int index = n;
+    while(v[index] == 0) index++;
+    
+    if(v[index] == 1) {
+        cout << "second" << endl;
+    }
+    else {
+        cout << "first"  << endl;
     }
 
     return 0;
